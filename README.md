@@ -1,4 +1,4 @@
-# flutter_riverpod
+# flutter_riverpod_and_code_generation
 
 A new Flutter project.
 
