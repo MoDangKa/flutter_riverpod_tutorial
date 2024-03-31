@@ -1,6 +1,6 @@
 {
-    "name": "flutter_riverpod_and_code_generation",
-    "short_name": "flutter_riverpod_and_code_generation",
+    "name": "flutter_riverpod_tutorial",
+    "short_name": "flutter_riverpod_tutorial",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
