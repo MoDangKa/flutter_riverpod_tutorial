@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'home_screen.dart';
 
-// Providers
-// Provider
-// StateProvider
-
-final nameProvider = StateProvider<String?>((ref) => null);
+String name = "";
 
 void main() {
+  name = "Thanaphon";
   runApp(const ProviderScope(child: MyApp()));
 }
 

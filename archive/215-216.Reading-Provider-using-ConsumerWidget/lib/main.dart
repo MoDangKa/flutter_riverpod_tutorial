@@ -4,9 +4,8 @@ import 'home_screen.dart';
 
 // Providers
 // Provider
-// StateProvider
 
-final nameProvider = StateProvider<String?>((ref) => null);
+final nameProvider = Provider<String>((ref) => "Rivaan");
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
