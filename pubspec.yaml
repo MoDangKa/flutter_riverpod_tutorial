@@ -38,6 +38,7 @@ dependencies:
   http: ^1.2.1
   flutter_riverpod: ^2.5.1
   hexcolor: ^3.0.1
+  logger: ^2.3.0
 
 dev_dependencies:
   flutter_test:

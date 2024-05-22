@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'screens/home_screen.dart';
-import 'models/user.dart';
+import 'home_screen.dart';
+import 'user.dart';
 
 // Providers
 // Provider
@@ -10,9 +10,7 @@ import 'models/user.dart';
 // StateNotifier and StateNotifierProvider
 
 final userProvider = StateNotifierProvider<UserNotifier, User>(
-  (ref) => UserNotifier(
-    const User(name: "Thanaphon Phumthan", age: 0),
-  ),
+  (ref) => UserNotifier(),
 );
 
 void main() {
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
