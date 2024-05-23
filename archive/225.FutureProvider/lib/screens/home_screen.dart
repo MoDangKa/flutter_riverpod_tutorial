@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_tutorial/models/customer.dart';
@@ -56,8 +54,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   void _onAgeChanged(String value) {
-    final currentValue =
-        value.isNotEmpty ? max(0, int.tryParse(value) ?? 0) : 0;
+    // final currentValue =
+    //     value.isNotEmpty ? max(0, int.tryParse(value) ?? 0) : 0;
     // ref.read(userChangeNotifierProvider).updateAge(currentValue);
   }
 
