@@ -54,3 +54,29 @@ class User {
   @override
   int get hashCode => name.hashCode ^ age.hashCode;
 }
+
+class UserNotifier extends StateNotifier<User> {
+  UserNotifier(super.state);
+
+  void updateName(String n) {
+    state = state.copyWith(name: n);
+  }
+
+  void updateAge(int a) {
+    state = state.copyWith(age: a);
+  }
+}
+
+class UserNotifierChange extends ChangeNotifier {
+  User user = const User(name: '', age: 0);
+
+  void updateName(String n) {
+    user = user.copyWith(name: n);
+    notifyListeners();
+  }
+
+  void updateAge(int a) {
+    user = user.copyWith(age: a);
+    notifyListeners();
+  }
+}

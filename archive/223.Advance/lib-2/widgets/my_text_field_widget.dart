@@ -51,7 +51,7 @@ class _MyTextFieldWidgetState extends State<MyTextFieldWidget> {
         newText = _textController.text;
         break;
     }
-    // logger.d('Text Changed: $newText');
+    logger.d('Text Changed: $newText');
     widget.onChanged(newText);
   }
 

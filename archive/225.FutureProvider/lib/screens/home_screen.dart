@@ -109,7 +109,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             backgroundColor: HexColor("#2196F3"),
           ),
-          body: _buildBody(data),
+          body: _buildBody(data as Customer),
         );
       },
       error: (error, stackTrace) {
