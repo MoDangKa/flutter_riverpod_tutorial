@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_tutorial/models/user.dart';
-import 'package:http/http.dart' as http;
 
-import 'screens/home_screen.dart';
 import 'models/customer.dart';
+import 'screens/home_screen.dart';
 
 // Providers
 // Provider
