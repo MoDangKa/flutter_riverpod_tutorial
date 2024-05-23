@@ -26,49 +26,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    logger.d('initState');
     final user = ref.read(userProvider);
     _nameController.text = user.name;
     _ageController.text = user.age.toString();
-    _nameController.addListener(_onNameChanged);
-    _ageController.addListener(_onAgeChanged);
+    _nameController.addListener(_onNameControllerChanged);
+    _ageController.addListener(_onAgeControllerChanged);
+  }
+
+  void _onNameControllerChanged() {
+    String newName = _nameController.text;
+    _onNameChanged(newName);
+  }
+
+  void _onAgeControllerChanged() {
+    final newAge = _ageController.text;
+    _onAgeChanged(newAge);
   }
 
   @override
-  void dispose() {
-    _nameController.dispose();
-    _ageController.dispose();
-    super.dispose();
-  }
-
-  void onChangeName(WidgetRef ref, String value) {
-    ref.read(userProvider.notifier).updateName(value);
-  }
-
-  void onChangeAge(WidgetRef ref, String value) {
-    final currentValue =
-        value.isNotEmpty ? max(0, int.tryParse(value) ?? 0) : 0;
-    ref.read(userProvider.notifier).updateAge(currentValue);
-  }
-
-  void _onNameChanged() {
-    String newName = _nameController.text;
-    ref.read(userProvider.notifier).updateName(newName);
-  }
-
-  void _onAgeChanged() {
-    try {
-      final newAge = _ageController.text;
-      int currentValue =
-          newAge.isNotEmpty ? max(0, int.tryParse(newAge) ?? 0) : 0;
-      ref.read(userProvider.notifier).updateAge(currentValue);
-    } catch (e) {
-      ref.read(userProvider.notifier).updateAge(0);
-    }
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    logger.d('didChangeDependencies');
   }
 
   @override
   void didUpdateWidget(covariant HomeScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
+    logger.d('didUpdateWidget');
     final user = ref.read(userProvider);
     if (_nameController.text != user.name) {
       _nameController.text = user.name;
@@ -80,9 +65,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   @override
+  void dispose() {
+    _nameController.dispose();
+    _ageController.dispose();
+    super.dispose();
+  }
+
+  void _onNameChanged(String value) {
+    ref.read(userProvider.notifier).updateName(value);
+  }
+
+  void _onAgeChanged(String value) {
+    final currentValue =
+        value.isNotEmpty ? max(0, int.tryParse(value) ?? 0) : 0;
+    ref.read(userProvider.notifier).updateAge(currentValue);
+  }
+
+  @override
   Widget build(BuildContext context) {
     final user = ref.watch(userProvider);
     final userName = ref.watch(userProvider.select((value) => value.name));
+    logger.d('build: ${user.name}');
 
     return Scaffold(
       appBar: AppBar(
@@ -101,12 +104,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             const Text("CustomTextField"),
             const SizedBox(height: 15),
             CustomTextField(
-              onChanged: (value) => setState(() => onChangeName(ref, value)),
+              onChanged: _onNameChanged,
             ),
             const SizedBox(height: 15),
             CustomTextField(
               type: TypeOption.number,
-              onChanged: (value) => setState(() => onChangeAge(ref, value)),
+              onChanged: _onAgeChanged,
             ),
             const SizedBox(height: 15),
             const CustomDivider(color: Colors.black12),
@@ -115,14 +118,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             const SizedBox(height: 15),
             MyTextFieldWidget(
               value: user.name,
-              onChanged: (value) => setState(() => onChangeName(ref, value)),
+              onChanged: _onNameChanged,
             ),
             const SizedBox(height: 15),
             MyTextFieldWidget(
               type: Type2Option.currency,
               decimal: 0,
               value: user.age.toString(),
-              onChanged: (value) => setState(() => onChangeAge(ref, value)),
+              onChanged: _onAgeChanged,
             ),
             const SizedBox(height: 15),
             const CustomDivider(color: Colors.black12),
