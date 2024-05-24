@@ -22,7 +22,7 @@ import 'screens/home_screen.dart';
 //     FutureProvider((ref) => CustomerRepository().fetchCustomerData());
 
 final fetchCustomerProvider = FutureProvider((ref) {
-  final customerRepository = ref.watch(userRepositoryProvider);
+  final customerRepository = ref.watch(customerRepositoryProvider);
   return customerRepository.fetchCustomerData();
 });
 

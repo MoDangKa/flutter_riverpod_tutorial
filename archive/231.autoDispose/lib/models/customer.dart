@@ -161,7 +161,7 @@ class Geo {
   }
 }
 
-final userRepositoryProvider =
+final customerRepositoryProvider =
     Provider.autoDispose((ref) => CustomerRepository());
 
 class CustomerRepository {

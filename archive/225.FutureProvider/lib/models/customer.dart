@@ -161,7 +161,7 @@ class Geo {
   }
 }
 
-final userRepositoryProvider = Provider((ref) => CustomerRepository());
+final customerRepositoryProvider = Provider((ref) => CustomerRepository());
 
 class CustomerRepository {
   Future<Customer> fetchCustomerData() {

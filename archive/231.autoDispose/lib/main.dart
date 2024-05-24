@@ -13,13 +13,13 @@ import 'screens/home_screen.dart';
 // StreamProvider
 
 // final fetchCustomerProvider = FutureProvider((ref) {
-//   final customerRepository = ref.watch(userRepositoryProvider);
+//   final customerRepository = ref.watch(customerRepositoryProvider);
 //   return customerRepository.fetchCustomerData("1");
 // });
 
 final fetchCustomerProvider =
     FutureProvider.family.autoDispose((ref, String input) {
-  final customerRepository = ref.watch(userRepositoryProvider);
+  final customerRepository = ref.watch(customerRepositoryProvider);
   return customerRepository.fetchCustomerData(input);
 });
 
